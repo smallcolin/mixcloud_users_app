@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { DataProvider } from '../../providers/data/data';
 
 @Component({
   selector: 'page-home',
@@ -7,8 +8,30 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
+  public music: any;
+  public username: string = '';
+  public noUserName: string;
 
+  constructor(public navCtrl: NavController, private _data: DataProvider) {
+  }
+
+  get_music() {
+    if(this.username === '') {
+      this.noUserName = 'Please enter a user name…';
+      this.music = '';
+    } else {
+      this.noUserName = '';
+      this._data.get_music(this.username).subscribe(
+        res => {
+          this.music = res;
+          console.log(res);
+        },
+        err => {
+          this.noUserName = 'No user was found with that name.  Please try again';
+          this.music = '';
+        }
+      );
+    }
   }
 
 }
