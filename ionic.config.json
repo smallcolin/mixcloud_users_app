@@ -1,0 +1,8 @@
+{
+  "name": "mixcloud_users",
+  "app_id": "",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
