@@ -1,35 +1,74 @@
-<ion-header>
+<!-- <ion-header>
   <ion-navbar>
     <ion-title>
-      Mixcloud Users
     </ion-title>
   </ion-navbar>
-</ion-header>
+</ion-header> -->
 
 <ion-content>
+  <ion-grid>
 
-  <form (ngSubmit)="get_music()">
-    <ion-input [(ngModel)]="username" name="username" type="text"></ion-input>
-    <ion-input type="submit" value="Get User profile"></ion-input>
-  </form>
+    <!-- LOGO -->
+    <ion-row>
+      <ion-col text-center>
+        <img class="main-logo" src="../assets/imgs/mixcloud_logo.png" alt="mixcloud-logo" />
+      </ion-col>
+    </ion-row>
 
-  <p>
-    {{ noUserName }}
-  </p>
+    <!-- Search Form -->
+    <ion-row>
+      <ion-col>
+        <form class="user-search-form" (ngSubmit)="get_music()" text-center>
+          <ion-label stacked>Enter a username…</ion-label>
+          <ion-input [(ngModel)]="username" name="username" type="text"></ion-input>
+          <button ion-button color="dark" outline type="submit">Search</button>
+        </form>
+      </ion-col>
+    </ion-row>
 
-  <div *ngIf="music">
-  <ul>
-    <li><strong>Username: </strong>{{ music.name }}</li>
-    <li><strong>Lives: </strong>{{ music.city }}</li>
-    <li><strong>Country: </strong>{{ music.country }}</li>
-    <li><strong>Following: </strong>{{ music.following_count }}</li>
-    <li><strong>Followers: </strong>{{ music.follower_count }}</li>
-    <li><strong>Words: </strong>{{ music.biog }}</li>
-    <li><strong>Member since: </strong>{{ music.created_time | date : 'd.M.yyyy' }}</li>
-    <li>
-      <img src="{{ music.pictures.large }}" alt="">
-    </li>
-  </ul>
-</div>
+    <!-- Search Result -->
+    <ion-row>
+      <ion-col text-center>
+        <p>
+          {{ noUserName }}
+        </p>
+
+        <div *ngIf="music">
+          <ion-list>
+            <ion-item>
+              <strong>Username: </strong>{{ music.name }}
+            </ion-item>
+            <ion-item>
+              <strong>Lives: </strong>{{ music.city }}
+            </ion-item>
+            <ion-item>
+              <strong>Country: </strong>{{ music.country }}
+            </ion-item>
+            <ion-item>
+              <strong>Following: </strong>
+              <ion-badge item-end>
+                {{ music.following_count }}
+              </ion-badge>
+            </ion-item>
+            <ion-item>
+              <strong>Followers: </strong>
+              <ion-badge item-end>
+                {{ music.follower_count }}
+              </ion-badge>
+            </ion-item>
+            <ion-item>
+              <img src="{{ music.pictures.large }}" alt="">
+            </ion-item>
+            <ion-item>
+              <strong>About: </strong>{{ music.biog }}
+            </ion-item>
+            <ion-item>
+              <strong>Member since: </strong>{{ music.created_time | date : 'd.M.yyyy' }}
+            </ion-item>
+          </ion-list>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
 </ion-content>
