@@ -38,7 +38,10 @@
         <div *ngIf="music">
           <ion-list>
             <ion-item>
-              <strong>Username: </strong>{{ music.name }}
+              <strong>Username: </strong>
+              <a href="{{ music.url }}">
+                {{ music.name }}
+              </a>
             </ion-item>
             <ion-item>
               <strong>Lives: </strong>{{ music.city }}
