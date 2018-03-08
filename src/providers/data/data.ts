@@ -11,15 +11,21 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class DataProvider {
 
-  result: any;
+  result: any
+  popData: any;
 
   constructor(private http: HttpClient) {
-    console.log('Hello DataProvider Provider');
   }
 
   get_music(username) {
     return this.http.get('https://api.mixcloud.com/' + username + '/').map(
       result => this.result = result
     );
+  }
+
+  get_the_popular() {
+    return this.http.get('https://api.mixcloud.com/popular/').map(
+      popData => this.popData = popData
+    )
   }
 }

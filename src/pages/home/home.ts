@@ -9,6 +9,7 @@ import { DataProvider } from '../../providers/data/data';
 export class HomePage {
 
   public music: any;
+  public popular: any;
   public username: string = '';
   public noUserName: string;
 
@@ -32,6 +33,18 @@ export class HomePage {
         }
       );
     }
+  }
+
+  get_popular() {
+    this._data.get_the_popular().subscribe(
+      res => {
+        this.popular = res;
+        console.log(res);
+      },
+      err => {
+        console.log(err);
+      }
+    );
   }
 
 }
