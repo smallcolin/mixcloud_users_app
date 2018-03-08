@@ -4,7 +4,10 @@
 }
 
 .user-search-form {
-  .item {
-    background: color($colors, primary);
+  .input {
+    background: color($colors, light);
+    border-bottom: 1px solid color($colors, dark);
+    width: 50%;
+    margin: 20px auto;
   }
 }
