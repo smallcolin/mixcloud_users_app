@@ -10,6 +10,7 @@ export class HomePage {
 
   public music: any;
   public popular: any;
+  public new: any;
   public username: string = '';
   public noUserName: string;
 
@@ -39,6 +40,18 @@ export class HomePage {
     this._data.get_the_popular().subscribe(
       res => {
         this.popular = res;
+        console.log(res);
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
+
+  get_new() {
+    this._data.get_the_new().subscribe(
+      res => {
+        this.new = res;
         console.log(res);
       },
       err => {

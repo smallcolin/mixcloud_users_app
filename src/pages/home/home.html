@@ -26,7 +26,14 @@
       </ion-col>
     </ion-row>
 
-    <button type="button" ion-button (tap)="get_popular()" color="light">Popular</button>
+    <ion-row text-center>
+      <ion-col>
+        <button type="button" ion-button (tap)="get_popular()" color="light">Popular</button>
+      </ion-col>
+      <ion-col width-50>
+          <button type="button" ion-button (tap)="get_new()" color="light">New</button>
+        </ion-col>
+    </ion-row>
 
     <!-- Search Result -->
     <ion-row>
@@ -97,6 +104,37 @@
         </div>
       </ion-col>
     </ion-row>
+    <!-- New Result -->
+    <ion-row>
+        <ion-col text-center>
+          <div *ngIf="new">
+            <h3>{{ new.name }}</h3>
+            <ion-list *ngFor="let item of new.data; index as i">
+              <ion-item>
+                {{ i + 1 }} <a href="{{ item.url }}">{{ item.name }}</a>
+              </ion-item>
+              <ion-item>
+                <img src="{{ item.pictures.thumbnail }}" alt=""/>
+                <strong>Uploaded by: </strong>
+                <a href="{{ item.user.url }}">
+                  {{ item.user.username }}
+                </a>, {{ item.created_time | date : 'd.M.yyyy' }}
+              </ion-item>
+              <ion-item>
+                <strong>Tags:-</strong>
+                <ion-list>
+                  <ion-item *ngFor="let tag of item.tags">
+                    {{ tag.name }}
+                  </ion-item>
+                </ion-list>
+              </ion-item>
+  
+            </ion-list>
+            <!-- <a href="{{ new.paging.previous }}">Prev</a>
+            <a href="{{ new.paging.next }}">Next</a> -->
+          </div>
+        </ion-col>
+      </ion-row>
   </ion-grid>
 
 </ion-content>

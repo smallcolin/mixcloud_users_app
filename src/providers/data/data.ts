@@ -13,6 +13,7 @@ export class DataProvider {
 
   result: any
   popData: any;
+  newData: any;
 
   constructor(private http: HttpClient) {
   }
@@ -25,6 +26,12 @@ export class DataProvider {
 
   get_the_popular() {
     return this.http.get('https://api.mixcloud.com/popular/').map(
+      popData => this.popData = popData
+    )
+  }
+  
+  get_the_new() {
+    return this.http.get('https://api.mixcloud.com/new/').map(
       popData => this.popData = popData
     )
   }
