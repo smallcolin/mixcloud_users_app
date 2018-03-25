@@ -2,4 +2,6 @@
 
 A simple Ionic / angular app that searches the mixcloud music platform for users then displays any details.
 
-Further features will include lists of users and maybe even a music player
+Popular & New Lists can be fetched on button click.
+
+Further planned features will include lists of users and a music player
